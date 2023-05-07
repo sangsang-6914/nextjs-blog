@@ -6,7 +6,9 @@ const HEADER_ITEMS = ['home', 'about', 'posts', 'contact'];
 function Header() {
   return (
     <header className="flex justify-between p-4 items-center">
-      <h1 className="font-bold text-3xl">{"Sang's Blog"}</h1>
+      <Link href="/" className="font-bold text-3xl">
+        {"Sang's Blog"}
+      </Link>
       <ul className="flex gap-4">
         {HEADER_ITEMS.map((item, index) => (
           <li key={index}>
