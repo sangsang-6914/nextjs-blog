@@ -20,12 +20,16 @@ function FilterablePosts({ posts, categories }: Props) {
       : posts.filter((post) => post.category === selected);
   return (
     <section className="flex m-4">
-      <GridPosts posts={filteredPosts} />
-      <Category
-        selected={selected}
-        onClick={setSelected}
-        categories={[ALL_POSTS, ...categories]}
-      />
+      <div>
+        <GridPosts posts={filteredPosts} />
+      </div>
+      <div>
+        <Category
+          selected={selected}
+          onClick={setSelected}
+          categories={[ALL_POSTS, ...categories]}
+        />
+      </div>
     </section>
   );
 }
