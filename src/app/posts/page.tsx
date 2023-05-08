@@ -1,16 +1,11 @@
 import { getAllPosts } from '@/api/posts';
-import Category from '@/components/Category';
-import GridPosts from '@/components/GridPosts';
+import FilterablePosts from '@/components/FilterablePosts';
 import React from 'react';
 
 async function PostsPage() {
   const posts = await getAllPosts();
-  return (
-    <section className="flex p-4">
-      <GridPosts posts={posts} />
-      <Category />
-    </section>
-  );
+  const categories = [...new Set(posts.map((post) => post.category))];
+  return <FilterablePosts posts={posts} categories={categories} />;
 }
 
 export default PostsPage;

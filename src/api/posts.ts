@@ -1,5 +1,5 @@
+import { readFile } from 'fs/promises';
 import path from 'path';
-import fs from 'fs';
 
 export interface PostData {
   title: string;
@@ -12,9 +12,9 @@ export interface PostData {
 
 export async function getAllPosts(): Promise<PostData[]> {
   const filePath = path.join(process.cwd(), 'data', 'posts.json');
-  const data = await fs.readFileSync(filePath, 'utf-8');
-  const posts = JSON.parse(data);
-  return posts;
+  return readFile(filePath, 'utf-8')
+    .then<PostData[]>(JSON.parse)
+    .then((posts) => posts.sort((a, b) => (a.date > b.date ? -1 : 1)));
 }
 
 export async function getFeaturedPosts() {

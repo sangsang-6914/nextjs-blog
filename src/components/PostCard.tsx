@@ -9,19 +9,23 @@ interface Props {
 function PostCard({ post }: Props) {
   const { path, date, description, category, title } = post;
   return (
-    <section className="shadow-md rounded-2xl overflow-hidden hover:shadow-xl cursor-pointer transition-all">
+    <section className="rounded-md overflow-hidden shadow-md hover:shadow-xl">
       <Image
         src={`/images/posts/${path}.png`}
         alt={title}
         width={300}
-        height={300}
+        height={200}
         className="w-full"
       />
-      <div className="flex flex-col items-center p-2">
-        <p className="text-gray-400 text-sm self-end">{date}</p>
-        <p className="font-bold">{title}</p>
-        <p className="truncate w-full text-center">{description}</p>
-        <p className="my-2 bg-green-200">{category}</p>
+      <div className="flex flex-col items-center p-4">
+        <time className="self-end text-gray-400 text-sm">
+          {date.toString()}
+        </time>
+        <h3 className="text-lg font-bold">{title}</h3>
+        <p className="w-full truncate text-center">{description}</p>
+        <span className="text-sm rounded-lg bg-green-100 px-2 my-2">
+          {category}
+        </span>
       </div>
     </section>
   );
