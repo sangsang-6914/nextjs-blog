@@ -1,6 +1,6 @@
 'use client';
 
-import { PostData } from '@/api/posts';
+import { PostData } from '@/service/posts';
 import React, { useState } from 'react';
 import Category from './Category';
 import GridPosts from './GridPosts';

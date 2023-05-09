@@ -1,4 +1,4 @@
-import { PostData } from '@/api/posts';
+import { PostData } from '@/service/posts';
 import React from 'react';
 import PostCard from './PostCard';
 

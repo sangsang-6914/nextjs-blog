@@ -1,5 +1,6 @@
 'use client';
 
+import { sendMail } from '@/service/contact';
 import React, { useState } from 'react';
 
 const INITIAL_FORM = {
@@ -20,14 +21,23 @@ function EmailForm() {
     setEmailInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSuccess('메일 보내기에 성공했습니다.');
-    setEmailInfo(INITIAL_FORM);
 
-    setTimeout(() => {
-      setSuccess(null);
-    }, 3000);
+    sendMail(emailInfo) //
+      .then(() => {
+        setSuccess('메일 보내기에 성공했습니다.');
+        setEmailInfo(INITIAL_FORM);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSuccess('메일 보내기에 실패했습니다.');
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setSuccess(null);
+        }, 3000);
+      });
   };
   return (
     <section className="w-full max-w-md">
@@ -44,7 +54,7 @@ function EmailForm() {
           Your Email
         </label>
         <input
-          type="email"
+          type="text"
           name="email"
           className="text-black p-1"
           onChange={handleChange}

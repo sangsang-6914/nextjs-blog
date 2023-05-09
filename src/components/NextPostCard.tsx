@@ -1,4 +1,4 @@
-import { PostData } from '@/api/posts';
+import { PostData } from '@/service/posts';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';

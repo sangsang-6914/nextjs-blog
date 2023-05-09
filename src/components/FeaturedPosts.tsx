@@ -1,4 +1,4 @@
-import { getFeaturedPosts } from '@/api/posts';
+import { getFeaturedPosts } from '@/service/posts';
 import React from 'react';
 import GridPosts from './GridPosts';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { PostData } from '@/api/posts';
+import { PostData } from '@/service/posts';
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import PostCard from './PostCard';
