@@ -29,7 +29,7 @@ function NextPostCard({ post, type }: Props) {
         {type === 'prev' && <BiLeftArrowAlt className={ICON_CLASS} />}
         <div className="w-full text-center">
           <h1 className="text-2xl">{title}</h1>
-          <p>{description}</p>
+          <p>{description}22</p>
         </div>
         {type === 'next' && <BiRightArrowAlt className={ICON_CLASS} />}
       </div>
