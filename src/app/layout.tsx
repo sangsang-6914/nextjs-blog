@@ -1,9 +1,9 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const sans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} max-w-screen-2xl flex flex-col w-full mx-auto`}
+        className={`${sans.className} max-w-screen-2xl flex flex-col w-full mx-auto`}
       >
         <Header />
         <main className="grow">{children}</main>

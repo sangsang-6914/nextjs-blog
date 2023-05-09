@@ -12,6 +12,8 @@ export interface PostData {
 
 export interface Post extends PostData {
   content: string;
+  prev: PostData | null;
+  next: PostData | null;
 }
 
 export async function getAllPosts(): Promise<PostData[]> {
@@ -33,12 +35,15 @@ export async function getNonFeaturedPosts() {
 
 export async function getPost(fileName: string): Promise<Post> {
   const markdownPath = path.join(process.cwd(), 'data', `posts/${fileName}.md`);
-  const metadata = await getAllPosts() //
-    .then((posts) => posts.find((post) => post.path === fileName));
+  const posts = await getAllPosts(); //
+  const post = posts.find((post) => post.path === fileName);
 
-  if (!metadata)
-    throw new Error(`${fileName}에 해당하는 포스트를 찾을 수 없음`);
+  if (!post) throw new Error(`${fileName}에 해당하는 포스트를 찾을 수 없음`);
+
+  const index = posts.indexOf(post);
+  const next = index > 0 ? posts[index - 1] : null;
+  const prev = index < posts.length - 1 ? posts[index + 1] : null;
 
   const content = await readFile(markdownPath, 'utf-8');
-  return { ...metadata, content };
+  return { ...post, content, prev, next };
 }
